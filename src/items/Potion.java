@@ -1,6 +1,6 @@
 package items;
 
-import heroes.Hero;
+import entities.heroes.Hero;
 
 /**
  * Represents a consumable potion that provides temporary or permanent stat boosts.
