@@ -132,8 +132,9 @@ Since this is a strategy game, the controls are expanded compared to the previou
     ```
 
 3.  **Run the Game:**
-
+    Navigate to bin directory through cd bin
     ```bash
+    
     java App
     ```
 
