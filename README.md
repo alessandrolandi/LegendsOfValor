@@ -1,10 +1,12 @@
 # CS611 - Assignment IV
-## Legends: Monsters and Heroes
+## Legends of Valor
 
 ------------------------------------------------------------
 - Alessandro Landi
 - **Email:** al6723@bu.edu
 - **Student ID:** U63309114
+
+
 ------------------------------------------------------------
 
 ### Overview
@@ -176,577 +178,783 @@ Q/q - Quit game
 ### Sample Input & Output
 ```text
 ========================================
-   LEGENDS: MONSTERS AND HEROES
+        RPG GAME COLLECTION
 ========================================
 
-Welcome, brave adventurer!
+Select a game to play:
+
+1. Monsters and Heroes
+   Classic RPG adventure with heroes,
+   monsters, markets, and exploration
+
+2. Legends of Valor
+   MOBA-style strategic battle arena
+   with 3 lanes and team combat
+
+0. Exit
+========================================
+Enter your choice: 2
+========================================
+       LEGENDS OF VALOR
+========================================
+
+Welcome to the Arena!
+
+Objective:
+- Reach the enemy Nexus to WIN
+- Defend your Nexus from monsters
 
 Controls:
-  W/w - Move up
-  A/a - Move left
-  S/s - Move down
-  D/d - Move right
-  I/i - Show information
-  E/e - Manage equipment and inventory
-  M/m - Enter market (when on market tile)
-  Q/q - Quit game
+  W - Move up    |  A - Move left
+  S - Move down  |  D - Move right
+  T - Teleport   |  R - Recall to Nexus
+  A - Attack     |  C - Cast Spell
+  P - Use Potion |  E - Equip Item
+  M - Market (at Nexus)
+  I - Info       |  Q - Quit
 
-Press Enter to continue...
+Press Enter to begin...
 
+
+=== BOARD SETUP ===
+3-Lane battle arena created!
 
 === HERO SELECTION ===
-Choose 1-3 heroes for your party:
-
-1. Gaerdal_Ironhand (Warrior)
-   Level: 1 | HP: 100 | MP: 100
-   STR: 770 | DEX: 600 | AGI: 550
-   Gold: 1354
-
-2. Sehanine_Monnbow (Warrior)
-   Level: 1 | HP: 100 | MP: 600
-   STR: 770 | DEX: 500 | AGI: 880
-   Gold: 2500
-
-3. Muamman_Duathall (Warrior)
-   Level: 1 | HP: 100 | MP: 300
-   STR: 990 | DEX: 750 | AGI: 550
-   Gold: 2546
-
-4. Flandal_Steelskin (Warrior)
-   Level: 1 | HP: 100 | MP: 200
-   STR: 825 | DEX: 700 | AGI: 715
-   Gold: 2500
-
-5. Undefeated_Yoj (Warrior)
-   Level: 1 | HP: 100 | MP: 400
-   STR: 880 | DEX: 700 | AGI: 440
-   Gold: 2500
-
-6. Eunoia_Cyn (Warrior)
-   Level: 1 | HP: 100 | MP: 400
-   STR: 770 | DEX: 600 | AGI: 880
-   Gold: 2500
-
-7. Parzival (Paladin)
-   Level: 1 | HP: 100 | MP: 300
-   STR: 825 | DEX: 770 | AGI: 650
-   Gold: 2500
-
-8. Sehanine_Moonbow (Paladin)
-   Level: 1 | HP: 100 | MP: 300
-   STR: 825 | DEX: 770 | AGI: 700
-   Gold: 2500
-
-9. Skoraeus_Stonebones (Paladin)
-   Level: 1 | HP: 100 | MP: 250
-   STR: 715 | DEX: 385 | AGI: 600
-   Gold: 2500
-
-10. Garl_Glittergold (Paladin)
-   Level: 1 | HP: 100 | MP: 100
-   STR: 660 | DEX: 440 | AGI: 500
-   Gold: 2500
-
-11. Amaryllis_Astra (Paladin)
-   Level: 1 | HP: 100 | MP: 500
-   STR: 550 | DEX: 550 | AGI: 500
-   Gold: 2500
-
-12. Caliber_Heist (Paladin)
-   Level: 1 | HP: 100 | MP: 400
-   STR: 440 | DEX: 440 | AGI: 400
-   Gold: 2500
-
-13. Rillifane_Rallathil (Sorcerer)
-   Level: 1 | HP: 100 | MP: 1300
-   STR: 750 | DEX: 550 | AGI: 495
-   Gold: 2500
-
-14. Segojan_Earthcaller (Sorcerer)
-   Level: 1 | HP: 100 | MP: 900
-   STR: 800 | DEX: 715 | AGI: 550
-   Gold: 2500
-
-15. Reign_Havoc (Sorcerer)
-   Level: 1 | HP: 100 | MP: 800
-   STR: 800 | DEX: 880 | AGI: 880
-   Gold: 2500
-
-16. Reverie_Ashels (Sorcerer)
-   Level: 1 | HP: 100 | MP: 900
-   STR: 800 | DEX: 440 | AGI: 770
-   Gold: 2500
-
-17. Kalabar (Sorcerer)
-   Level: 1 | HP: 100 | MP: 800
-   STR: 850 | DEX: 660 | AGI: 440
-   Gold: 2500
-
-18. Skye_Soar (Sorcerer)
-   Level: 1 | HP: 100 | MP: 1000
-   STR: 700 | DEX: 550 | AGI: 440
-   Gold: 2500
-
-
-How many heroes will join your party? (1-3): 1
-
-Select hero #1 (1-18): 1
-Selected: Gaerdal_Ironhand the Warrior
-
-World created! Your adventure begins...
-
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-P . . M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M . . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (0, 0)
-
-Enter command: d
-Party moved.
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-. P . M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M . . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (0, 1)
-
-Enter command: d
-Party moved.
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-. . P M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M . . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (0, 2)
-
-Enter command: s
-Party moved.
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-. . . M M M . . 
-. . P X . X X M 
-. M . X . M . . 
-M M . . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (1, 2)
-
-Enter command: m
-
-=== WELCOME TO THE MARKET ===
-
-Choose a hero to shop with (or 0 to exit):
-1. Gaerdal_Ironhand (Gold: 1354)
-0. Exit market
-1
-
-=== Gaerdal_Ironhand's Shop Menu ===
-Gold: 1354
-
-1. Buy items
-2. Sell items
-3. View inventory
-0. Back
-1
-
-=== ITEMS FOR SALE ===
-
-1.
-Sword [Weapon]
-  Price: 500 gold
-  Required Level: 1
-  Damage: 800
-  Hands Required: 1
-  Uses: 10/10
-
-2.
-Platinum_Shield [Armor]
-  Price: 150 gold
-  Required Level: 1
-  Damage Reduction: 200
-  Uses: 10/10
-
-0. Back
-
-Select item to buy (0 to cancel): 1
-Purchased Sword!
-
-=== Gaerdal_Ironhand's Shop Menu ===
-Gold: 854
-
-1. Buy items
-2. Sell items
-3. View inventory
-0. Back
-1
 
-=== ITEMS FOR SALE ===
+--- Selecting hero for Top Lane ---
+1. Gaerdal_Ironhand (Warrior) - HP:100 MP:100 STR:770
+2. Sehanine_Monnbow (Warrior) - HP:100 MP:600 STR:770
+3. Muamman_Duathall (Warrior) - HP:100 MP:300 STR:990
+4. Flandal_Steelskin (Warrior) - HP:100 MP:200 STR:825
+5. Undefeated_Yoj (Warrior) - HP:100 MP:400 STR:880
+6. Eunoia_Cyn (Warrior) - HP:100 MP:400 STR:770
+7. Parzival (Paladin) - HP:100 MP:300 STR:825
+8. Sehanine_Moonbow (Paladin) - HP:100 MP:300 STR:825
+9. Skoraeus_Stonebones (Paladin) - HP:100 MP:250 STR:715
+10. Garl_Glittergold (Paladin) - HP:100 MP:100 STR:660
+11. Amaryllis_Astra (Paladin) - HP:100 MP:500 STR:550
+12. Caliber_Heist (Paladin) - HP:100 MP:400 STR:440
+13. Rillifane_Rallathil (Sorcerer) - HP:100 MP:1300 STR:750
+14. Segojan_Earthcaller (Sorcerer) - HP:100 MP:900 STR:800
+15. Reign_Havoc (Sorcerer) - HP:100 MP:800 STR:800
+16. Reverie_Ashels (Sorcerer) - HP:100 MP:900 STR:800
+17. Kalabar (Sorcerer) - HP:100 MP:800 STR:850
+18. Skye_Soar (Sorcerer) - HP:100 MP:1000 STR:700
+Select hero (1-18): 1
+Gaerdal_Ironhand assigned to Top Lane
+
+--- Selecting hero for Mid Lane ---
+1. Gaerdal_Ironhand (Warrior) - HP:100 MP:100 STR:770
+2. Sehanine_Monnbow (Warrior) - HP:100 MP:600 STR:770
+3. Muamman_Duathall (Warrior) - HP:100 MP:300 STR:990
+4. Flandal_Steelskin (Warrior) - HP:100 MP:200 STR:825
+5. Undefeated_Yoj (Warrior) - HP:100 MP:400 STR:880
+6. Eunoia_Cyn (Warrior) - HP:100 MP:400 STR:770
+7. Parzival (Paladin) - HP:100 MP:300 STR:825
+8. Sehanine_Moonbow (Paladin) - HP:100 MP:300 STR:825
+9. Skoraeus_Stonebones (Paladin) - HP:100 MP:250 STR:715
+10. Garl_Glittergold (Paladin) - HP:100 MP:100 STR:660
+11. Amaryllis_Astra (Paladin) - HP:100 MP:500 STR:550
+12. Caliber_Heist (Paladin) - HP:100 MP:400 STR:440
+13. Rillifane_Rallathil (Sorcerer) - HP:100 MP:1300 STR:750
+14. Segojan_Earthcaller (Sorcerer) - HP:100 MP:900 STR:800
+15. Reign_Havoc (Sorcerer) - HP:100 MP:800 STR:800
+16. Reverie_Ashels (Sorcerer) - HP:100 MP:900 STR:800
+17. Kalabar (Sorcerer) - HP:100 MP:800 STR:850
+18. Skye_Soar (Sorcerer) - HP:100 MP:1000 STR:700
+Select hero (1-18): 2
+Sehanine_Monnbow assigned to Mid Lane
+
+--- Selecting hero for Bot Lane ---
+1. Gaerdal_Ironhand (Warrior) - HP:100 MP:100 STR:770
+2. Sehanine_Monnbow (Warrior) - HP:100 MP:600 STR:770
+3. Muamman_Duathall (Warrior) - HP:100 MP:300 STR:990
+4. Flandal_Steelskin (Warrior) - HP:100 MP:200 STR:825
+5. Undefeated_Yoj (Warrior) - HP:100 MP:400 STR:880
+6. Eunoia_Cyn (Warrior) - HP:100 MP:400 STR:770
+7. Parzival (Paladin) - HP:100 MP:300 STR:825
+8. Sehanine_Moonbow (Paladin) - HP:100 MP:300 STR:825
+9. Skoraeus_Stonebones (Paladin) - HP:100 MP:250 STR:715
+10. Garl_Glittergold (Paladin) - HP:100 MP:100 STR:660
+11. Amaryllis_Astra (Paladin) - HP:100 MP:500 STR:550
+12. Caliber_Heist (Paladin) - HP:100 MP:400 STR:440
+13. Rillifane_Rallathil (Sorcerer) - HP:100 MP:1300 STR:750
+14. Segojan_Earthcaller (Sorcerer) - HP:100 MP:900 STR:800
+15. Reign_Havoc (Sorcerer) - HP:100 MP:800 STR:800
+16. Reverie_Ashels (Sorcerer) - HP:100 MP:900 STR:800
+17. Kalabar (Sorcerer) - HP:100 MP:800 STR:850
+18. Skye_Soar (Sorcerer) - HP:100 MP:1000 STR:700
+Select hero (1-18): 3
+Muamman_Duathall assigned to Bot Lane
+
+ 3 monsters have spawned!
+
+Game initialized! Battle begins!
+
+==================================================
+ROUND 1
+==================================================
+
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |M1     |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
 
-1.
-Platinum_Shield [Armor]
-  Price: 150 gold
-  Required Level: 1
-  Damage Reduction: 200
-  Uses: 10/10
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|H1     |    |       |    | X X X |    |H2     |    |       |    | X X X |    |H3     |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
 
-0. Back
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
 
-Select item to buy (0 to cancel): 2
-Enter number between 0 and 1 (or 'q' to quit): 
-1
-Purchased Platinum_Shield!
+>>> HEROES' TURN <<<
 
-=== Gaerdal_Ironhand's Shop Menu ===
-Gold: 704
-
-1. Buy items
-2. Sell items
-3. View inventory
-0. Back
-0
-
-Choose a hero to shop with (or 0 to exit):
-1. Gaerdal_Ironhand (Gold: 704)
-0. Exit market
-0
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-. . . M M M . . 
-. . P X . X X M 
-. M . X . M . . 
-M M . . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (1, 2)
-
-Enter command: s
-Party moved.
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-. . . M M M . . 
-. . M X . X X M 
-. M P X . M . . 
-M M . . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (2, 2)
-
-Enter command: s
-Party moved.
-
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
-
-. . . M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M P . M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
-
-Party position: (3, 2)
-
-Enter command: d
-Party moved.
-
-Monsters appear!
-╔══════════════════╗
-║  BATTLE BEGINS!  ║
-╚══════════════════╝
-
-
-=== BATTLE STATUS ===
-
-HEROES:
-  Gaerdal_Ironhand - HP: 100 | MP: 100
-
-MONSTERS:
-  Blinky - HP: 100
-
-═══ ROUND 1 ═══
-
-═══ HEROES' TURN ═══
-
-Gaerdal_Ironhand's turn:
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (7, 0)
 HP: 100 | MP: 100
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. View stats
-Enter choice: 1
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Gaerdal_Ironhand moved to (6, 0)
 
-Select target:
-1. Blinky (HP: 100)
-1
-Blinky dodged the attack!
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (7, 3)
+HP: 100 | MP: 600
 
-═══ MONSTERS' TURN ═══
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Sehanine_Monnbow moved to (6, 3)
+
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (7, 6)
+HP: 100 | MP: 300
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Muamman_Duathall moved to (6, 6)
+
+>>> MONSTERS' TURN <<<
+Casper advanced to (1, 1)
+Blinky advanced to (1, 4)
+Casper advanced to (1, 7)
+
+==================================================
+ROUND 2
+==================================================
+
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |M1     |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|H1     |    |       |    | X X X |    |H2     |    |       |    | X X X |    |H3     |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
+
+>>> HEROES' TURN <<<
+
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (6, 0)
+HP: 100 | MP: 100
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Gaerdal_Ironhand moved to (5, 0)
+
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (6, 3)
+HP: 100 | MP: 600
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Sehanine_Monnbow moved to (5, 3)
+
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (6, 6)
+HP: 100 | MP: 300
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Muamman_Duathall moved to (5, 6)
+
+>>> MONSTERS' TURN <<<
+Casper advanced to (2, 1)
+Blinky advanced to (2, 4)
+Casper advanced to (2, 7)
+
+==================================================
+ROUND 3
+==================================================
+
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |M1     |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|H1     |    |       |    | X X X |    |H2     |    |       |    | X X X |    |H3     |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
+
+>>> HEROES' TURN <<<
+
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (5, 0)
+HP: 100 | MP: 100
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Gaerdal_Ironhand moved to (4, 0)
+
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (5, 3)
+HP: 100 | MP: 600
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Sehanine_Monnbow moved to (4, 3)
+
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (5, 6)
+HP: 100 | MP: 300
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Muamman_Duathall moved to (4, 6)
+
+>>> MONSTERS' TURN <<<
+Casper advanced to (3, 1)
+Blinky advanced to (3, 4)
+Casper advanced to (3, 7)
+
+==================================================
+ROUND 4
+==================================================
+
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |M1     |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|H1     |    |       |    | X X X |    |H2     |    |       |    | X X X |    |H3     |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
+
+>>> HEROES' TURN <<<
+
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (4, 0)
+HP: 100 | MP: 100
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: D
+Gaerdal_Ironhand moved to (4, 1)
+
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (4, 3)
+HP: 100 | MP: 600
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: D
+Sehanine_Monnbow moved to (4, 4)
+
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (4, 6)
+HP: 100 | MP: 300
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: D
+Muamman_Duathall moved to (4, 7)
+
+>>> MONSTERS' TURN <<<
+Casper attacks Gaerdal_Ironhand!
+Gaerdal_Ironhand dodged Casper's attack!
+Blinky attacks Sehanine_Monnbow!
+Blinky attacked Sehanine_Monnbow for 45 damage!
+Casper attacks Muamman_Duathall!
+Casper attacked Muamman_Duathall for 10 damage!
+
+==================================================
+ROUND 5
+==================================================
+
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |M1     |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |H1     |    | X X X |    |       |    |H2     |    | X X X |    |       |    |H3     |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
+
+>>> HEROES' TURN <<<
+
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (4, 1)
+HP: 100 | MP: 100
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Cannot move there!
+
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (4, 4)
+HP: 60 | MP: 600
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: A
+Sehanine_Monnbow moved to (4, 3)
+
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (4, 7)
+HP: 99 | MP: 300
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: A
+Muamman_Duathall moved to (4, 6)
+
+>>> MONSTERS' TURN <<<
+Casper attacks Gaerdal_Ironhand!
+Casper attacked Gaerdal_Ironhand for 10 damage!
+Blinky attacks Sehanine_Monnbow!
+Blinky attacked Sehanine_Monnbow for 45 damage!
+Casper attacks Muamman_Duathall!
+Casper attacked Muamman_Duathall for 10 damage!
+
+==================================================
+ROUND 6
+==================================================
+
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |M1     |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |H1     |    | X X X |    |H2     |    |       |    | X X X |    |H3     |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
+
+>>> HEROES' TURN <<<
+
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (4, 1)
+HP: 99 | MP: 100
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: T
+
+Select target hero to teleport near:
+2. Sehanine_Monnbow at (4, 3) Lane 2
+3. Muamman_Duathall at (4, 6) Lane 3
+Select (0 to cancel): 2
+Gaerdal_Ironhand teleported to (3, 3)!
+
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (4, 3)
+HP: 17 | MP: 600
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: T
+
+Select target hero to teleport near:
+1. Gaerdal_Ironhand at (3, 3) Lane 1
+3. Muamman_Duathall at (4, 6) Lane 3
+Select (0 to cancel): 3
+Sehanine_Monnbow teleported to (3, 6)!
+
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (4, 6)
+HP: 97 | MP: 300
+
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: T
+
+Select target hero to teleport near:
+1. Gaerdal_Ironhand at (3, 3) Lane 1
+2. Sehanine_Monnbow at (3, 6) Lane 2
+Select (0 to cancel): 2
+Muamman_Duathall teleported to (2, 6)!
+
+>>> MONSTERS' TURN <<<
+Casper advanced to (4, 1)
+Blinky attacks Gaerdal_Ironhand!
 Blinky attacked Gaerdal_Ironhand for 45 damage!
+Casper attacks Sehanine_Monnbow!
+Casper attacked Sehanine_Monnbow for 10 damage!
 
-Heroes regenerated 10% HP and MP!
+==================================================
+ROUND 7
+==================================================
 
-═══ ROUND 2 ═══
 
-═══ HEROES' TURN ═══
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
 
-Gaerdal_Ironhand's turn:
-HP: 60 | MP: 100
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. View stats
-Enter choice: 4
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |H3     |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
 
-1. Equip main hand weapon
-2. Equip off hand weapon
-3. Equip armor
-0. Back
-Enter choice: 1
-1. Sword
-1
-Gaerdal_Ironhand equipped Sword (ONE_HANDED)
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |       |    | X X X |    |H1     |    |M2     |    | X X X |    |H2     |    |M3     |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. Change weapon grip
-6. View stats
-Enter choice: 4
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |M1     |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
 
-1. Equip main hand weapon
-2. Equip off hand weapon
-3. Equip armor
-0. Back
-Enter choice: 3
-1. Platinum_Shield
-1
-Gaerdal_Ironhand equipped Platinum_Shield
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. Change weapon grip
-6. View stats
-Enter choice: 1
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
 
-Select target:
-1. Blinky (HP: 100)
-1
-Gaerdal_Ironhand attacked Blinky for 49 damage!
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
 
-═══ MONSTERS' TURN ═══
-Blinky attacked Gaerdal_Ironhand for 15 damage!
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
 
-Heroes regenerated 10% HP and MP!
+>>> HEROES' TURN <<<
 
-═══ ROUND 3 ═══
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (3, 3)
+HP: 59 | MP: 100
 
-═══ HEROES' TURN ═══
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Gaerdal_Ironhand moved to (2, 3)
 
-Gaerdal_Ironhand's turn:
-HP: 50 | MP: 100
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (3, 6)
+HP: 7 | MP: 600
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. Change weapon grip
-6. View stats
-Enter choice: 1
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Cannot move there!
 
-Select target:
-1. Blinky (HP: 50)
-1
-Blinky dodged the attack!
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (2, 6)
+HP: 100 | MP: 300
 
-═══ MONSTERS' TURN ═══
-Blinky attacked Gaerdal_Ironhand for 15 damage!
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Muamman_Duathall moved to (1, 6)
 
-Heroes regenerated 10% HP and MP!
+>>> MONSTERS' TURN <<<
+Casper advanced to (5, 1)
+Blinky attacks Gaerdal_Ironhand!
+Blinky attacked Gaerdal_Ironhand for 45 damage!
+Casper attacks Sehanine_Monnbow!
+Sehanine_Monnbow has fainted!
+Casper attacked Sehanine_Monnbow for 10 damage!
+Sehanine_Monnbow has fainted!
+Sehanine_Monnbow has been defeated!
+Sehanine_Monnbow has been revived!
+Sehanine_Monnbow respawned at Nexus!
 
-═══ ROUND 4 ═══
+==================================================
+ROUND 8
+==================================================
 
-═══ HEROES' TURN ═══
 
-Gaerdal_Ironhand's turn:
-HP: 38 | MP: 100
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. Change weapon grip
-6. View stats
-Enter choice: 1
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |H3     |    |       |
+C - C - C    P - P - P    I - I - I    P - P - P    P - P - P    I - I - I    K - K - K    P - P - P
 
-Select target:
-1. Blinky (HP: 50)
-1
-Gaerdal_Ironhand attacked Blinky for 49 damage!
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
+|       |    |       |    | X X X |    |H1     |    |       |    | X X X |    |       |    |       |
+P - P - P    P - P - P    I - I - I    C - C - C    K - K - K    I - I - I    P - P - P    C - C - C
 
-═══ MONSTERS' TURN ═══
-Blinky attacked Gaerdal_Ironhand for 15 damage!
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
+|       |    |       |    | X X X |    |       |    |M2     |    | X X X |    |       |    |M3     |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    P - P - P
 
-Heroes regenerated 10% HP and MP!
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    P - P - P    B - B - B    I - I - I    P - P - P    K - K - K
 
-═══ ROUND 5 ═══
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
+|       |    |M1     |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+K - K - K    P - P - P    I - I - I    C - C - C    P - P - P    I - I - I    B - B - B    B - B - B
 
-═══ HEROES' TURN ═══
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
+|       |    |       |    | X X X |    |       |    |       |    | X X X |    |       |    |       |
+C - C - C    B - B - B    I - I - I    B - B - B    C - C - C    I - I - I    B - B - B    K - K - K
 
-Gaerdal_Ironhand's turn:
-HP: 25 | MP: 100
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
+|       |    |       |    | X X X |    |H2     |    |       |    | X X X |    |       |    |       |
+N - N - N    N - N - N    I - I - I    N - N - N    N - N - N    I - I - I    N - N - N    N - N - N
 
-Choose action:
-1. Attack
-2. Cast spell
-3. Use potion
-4. Equip weapon/armor
-5. Change weapon grip
-6. View stats
-Enter choice: 1
+Legend: N=Nexus I=Inaccessible P=Plain B=Bush C=Cave K=Koulou | H1/H2/H3=Heroes M#=Monsters
 
-Select target:
-1. Blinky (HP: 1)
-1
-Gaerdal_Ironhand attacked Blinky for 49 damage!
-Blinky was defeated!
-╔════════════╗
-║  VICTORY!  ║
-╚════════════╝
-Gaerdal_Ironhand gained 100 gold and 2 experience!
+>>> HEROES' TURN <<<
 
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
+--- Gaerdal_Ironhand's Turn (Lane 1) ---
+Position: (2, 3)
+HP: 15 | MP: 100
 
-. . . M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M . P M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Gaerdal_Ironhand moved to (1, 3)
 
-Party position: (3, 3)
+--- Sehanine_Monnbow's Turn (Lane 2) ---
+Position: (7, 3)
+HP: 50 | MP: 300
 
-Enter command: q
-Are you sure you want to quit? (y/n): n
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Sehanine_Monnbow moved to (6, 3)
 
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
+--- Muamman_Duathall's Turn (Lane 3) ---
+Position: (1, 6)
+HP: 100 | MP: 300
 
-. . . M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M . P M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
+Actions: [W]Move Up [S]Down [A]Left [D]Right
+         [T]Teleport [R]Recall [K]Attack [C]Spell
+         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit
+Choose action: W
+Muamman_Duathall moved to (0, 6)
 
-Party position: (3, 3)
+VICTORY! A hero reached the monster Nexus!
 
-Enter command: e
+==================================================
+GAME OVER
+==================================================
+Final Stats:
+Gaerdal_Ironhand - Level 1 | Gold: 1354
+Sehanine_Monnbow - Level 1 | Gold: 2500
+Muamman_Duathall - Level 1 | Gold: 2546
 
-=== INVENTORY MANAGEMENT ===
 
-=== Gaerdal_Ironhand's Inventory ===
-HP: 25 | MP: 100 | Gold: 804
 
-Choose action:
-1. Equip weapon
-2. Equip armor
-3. Use potion
-4. Change weapon grip
-5. View inventory
-0. Back
-Enter choice: 3
-No potions in inventory!
+========================================
+        RPG GAME COLLECTION
+========================================
 
-=== Gaerdal_Ironhand's Inventory ===
-HP: 25 | MP: 100 | Gold: 804
+Select a game to play:
 
-Choose action:
-1. Equip weapon
-2. Equip armor
-3. Use potion
-4. Change weapon grip
-5. View inventory
-0. Back
-Enter choice: 0
+1. Monsters and Heroes
+   Classic RPG adventure with heroes,
+   monsters, markets, and exploration
 
-=== WORLD MAP ===
-Legend: P=Party, M=Market, X=Inaccessible, .=Common
+2. Legends of Valor
+   MOBA-style strategic battle arena
+   with 3 lanes and team combat
 
-. . . M M M . . 
-. . M X . X X M 
-. M . X . M . . 
-M M . P M . X . 
-. . M M M . X . 
-. . M . X . X M 
-. M M . X M . . 
-. X . . M . . . 
+0. Exit
+========================================
+Enter your choice: 0
 
-Party position: (3, 3)
-
-Enter command: q
-Are you sure you want to quit? (y/n): y
-
-Thanks for playing! Goodbye!
+Thank you for playing! Goodbye!
 ```
 
 ### Architecture & Design
