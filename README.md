@@ -133,8 +133,11 @@ Since this is a strategy game, the controls are expanded compared to the previou
     ```
 
 3.  **Run the Game:**
-    Navigate to bin directory through cd bin
+    Navigate to bin directory using commands cd .. and cd bin
     ```bash
+    cd ..
+    
+    cd bin
     
     java App
     ```
