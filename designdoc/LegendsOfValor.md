@@ -1,8 +1,8 @@
 # Design Document: Legends of Valor
 
-- **Name:** Renwei Li / [Teammate's Name]
-- **Email:** lir14@bu.edu / [Teammate's Email]
-- **Student ID:** U08183479 / [Teammate's ID]
+- **Team Members:** Alessandro Landi / Renwei Li / Nandini Nandan Narvekar
+- **Email:** al6723@bu.edu / lir14@bu.edu / nnandini@bu.edu
+- **Student ID:** U63309114 / U08183479 / U25345416
 
 ---
 
