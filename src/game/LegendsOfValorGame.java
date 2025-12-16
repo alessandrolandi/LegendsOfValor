@@ -736,8 +736,8 @@ public class LegendsOfValorGame extends RPGGame {
         case "N": return Color.BOLD_CYAN;     // Nexus
         case "I": return Color.BRIGHT_BLACK;  // Inaccessible
         case "B": return Color.GREEN;          // Bush
-        case "K": return Color.BOLD_YELLOW;   // Keep
-        case "C": return Color.BOLD_PURPLE;          // Cave
+        case "K": return Color.BOLD_YELLOW;   // Koulou
+        case "C": return Color.BOLD_PURPLE;   // Cave
         default:  return Color.WHITE;
     }
 }
