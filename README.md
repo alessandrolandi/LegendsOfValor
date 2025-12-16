@@ -1,178 +1,156 @@
-# CS611 - Assignment IV
-## Legends of Valor
+# CS611 - Assignment V
 
-------------------------------------------------------------
-- Alessandro Landi
-- **Email:** al6723@bu.edu
-- **Student ID:** U63309114
+## Legends of Valor (and Legends: Monsters and Heroes)
 
+---
 
-------------------------------------------------------------
+- **Team Members:** Alessandro Landi / Renwei Li / Nandini Nandan Narvekar
+- **Email:** al6723@bu.edu / lir14@bu.edu / nnandini@bu.edu
+- **Student ID:** U63309114 / U08183479 / U25345416
+
+---
 
 ### Overview
 
-This is a turn-based RPG game where a party of heroes battles monsters in an 8x8 grid world. The game features:
-- **Proper inheritance hierarchy** with RPGGame → HeroesAndMonsters → Game
-- **Creature abstraction** allowing heroes and monsters to attack uniformly through polymorphism
-- **Inventory management system** with dedicated Inventory class
-- **Comprehensive documentation** with Javadoc comments on all classes
-- Turn-based combat with weapons, spells, armor, and potions
-- Market system for buying and selling equipment
-- Multiple hero and monster types with unique abilities
+This project implements **Legends of Valor**, a MOBA-style (Multiplayer Online Battle Arena) strategy game played on a console grid. It is built upon the framework of the previous "Legends: Monsters and Heroes" assignment.
+
+The application now features a **Game Menu** that allows the player to choose between:
+
+1.  **Monsters and Heroes:** The classic dungeon crawler exploration game.
+2.  **Legends of Valor:** The new strategic game featuring a 3-lane map, Nexus bases, and wave-based monster attacks.
+
+**Key Features of Legends of Valor:**
+
+- **3-Lane Map:** An 8x8 grid divided into Top, Mid, and Bot lanes, separated by inaccessible walls.
+- **Strategic Terrain:** Special tiles (Bush, Cave, Koulou) providing stat buffs to heroes.
+- **Objective-Based Gameplay:** The goal is to march a hero into the enemy's Nexus while preventing monsters from reaching the hero's Nexus.
+- **Advanced Movement:** Includes Teleporting between lanes and Recalling to base.
+- **Monster AI:** Monsters automatically spawn and march toward the hero base.
 
 ### Files
 
-#### Core Game Files
-- **App.java** — Entry point for the game; initializes and starts the game.
-- **RPGGame.java** — Abstract base class for all RPG games. Provides core functionality for game initialization, running the game loop, and handling user input/output.
-- **HeroesAndMonsters.java** — Extends RPGGame to provide specific functionality for managing parties of heroes that battle against monsters.
-- **Game.java** — Main game controller that extends HeroesAndMonsters. Manages the game loop, world navigation, and player commands. Handles hero selection, world creation, and coordinates between different game systems (battles, markets, inventory).
-- **World.java** — Manages the 8x8 game world grid, tile placement, and party movement. Generates the world with random distribution of market tiles, inaccessible tiles, and common tiles.
-- **Party.java** — Manages the group of heroes (1-3 heroes). Tracks party-wide operations like regeneration, revival, and collective stats.
-- **Inventory.java** — Manages a collection of items with methods to add, remove, and query items by type (weapons, armor, potions, spells).
+#### Game Control & Entry
 
-#### Battle System
-- **Battle.java**
-  - Implements the turn-based combat system between heroes and monsters.
-  - Manages round progression, hero/monster turns, and victory/defeat conditions.
-  - Handles combat actions: attacking, spell casting, potion usage, equipment changes, and weapon grip modifications.
-  - Dynamically shows/hides menu options based on hero state (e.g., "Change weapon grip" only appears when weapon is equipped).
-  - Awards gold and experience upon victory.
+- **App.java** — Entry point. Launches the GameMenu.
+- **GameMenu.java** — Handles the main menu selection, allowing the user to switch between "Monsters and Heroes" and "Legends of Valor".
+- **RPGGame.java** — Abstract base class defining the structure (start, game loop) for both game modes.
 
-#### Character System
+#### Concrete Game Implementations
 
-##### Base Classes
-- **base/Creature.java** — Abstract base class for all creatures (heroes and monsters). Provides common combat functionality including:
-  - Abstract methods for attack, takeDamage, dodge, and displayStats
-  - Common properties: name, level, HP, fainted status
-  - Allows polymorphic interactions between heroes and monsters in combat
+- **LegendsOfValorGame.java** — The core controller for the Legends of Valor game. Manages:
+  - Round-based logic (Hero Turn -> Monster Turn -> Regeneration).
+  - Hero spawning and lane assignment.
+  - Periodic monster spawning (waves).
+  - Victory and Defeat condition checks.
+- **HeroesAndMonstersGame.java** — The controller for the previous exploration-based game.
 
-##### Heroes
-- **heroes/Hero.java** — Abstract base class for all hero types. Extends Creature. Manages:
-  - Stats (HP, MP, strength, dexterity, agility, level, experience, gold)
-  - Combat mechanics (attacking with/without weapons, spell casting, dodging)
-  - Equipment system (weapons, armor, weapon grips)
-  - Inventory management
-  - Leveling system with stat scaling
+#### World & Tile System
 
-- **heroes/Warrior.java** — Warrior class with bonuses to strength and agility (10% starting bonus, 5% per level).
-- **heroes/Paladin.java** — Paladin class with bonuses to strength and dexterity (10% starting bonus, 5% per level).
-- **heroes/Sorcerer.java** — Sorcerer class with bonuses to dexterity and agility (10% starting bonus, 5% per level).
-- **heroes/Inventory.java** — Item inventory management class specific to heroes. Provides filtered access to items by category.
+- **board/Board.java** — Abstract base class for grid management.
+- **board/LegendsOfValorBoard.java** — Generates the specific 8x8 MOBA map. Handles the placement of lanes, walls, and random buff tiles.
+- **board/Tile.java** — Abstract base class. Now acts as a container for `List<Hero>` and `List<Monster>`, allowing multiple entities on one tile.
+- **board/NexusTile.java** — Represents the base. Allows buying/selling (Market) for heroes. Target for monsters.
+- **board/BushTile.java** — Increases Hero Dexterity by 10%.
+- **board/CaveTile.java** — Increases Hero Agility by 10%.
+- **board/KoulouTile.java** — Increases Hero Strength by 10%.
+- **board/PlainTile.java** — Represents a standard accessible tile.
+- **board/InaccessibleTile.java** — Represents walls/barriers between lanes.
 
-##### Monsters
-- **monsters/Monster.java** — Abstract base class for all monsters. Extends Creature. Manages:
-  - Stats (HP, level, damage, defense, dodge chance)
-  - Combat mechanics (attacking heroes, taking damage, dodging)
-  - Spell effects (damage reduction, defense reduction, dodge reduction)
-  - HP initialized at level × 100
+#### Character System (Entities)
 
-- **monsters/Dragon.java** — Dragon type with 20% increased base damage.
-- **monsters/Exoskeleton.java** — Exoskeleton type with 10% increased defense.
-- **monsters/Spirit.java** — Spirit type with 10% increased dodge chance.
+- **entities/Creature.java** — Abstract base class for all combatants.
+- **entities/heroes/Hero.java** — Updated to support Legends of Valor features:
+  - teleport() logic.
+  - recall() logic.
+  - Terrain bonus application (applyStrengthBonus, etc.).
+  - Lane tracking.
+- **entities/monsters/Monster.java** — Updated to support Legends of Valor features:
+  - moveForward() AI (marches south automatically).
+  - Lane tracking.
+- **entities/heroes/Warrior.java, Paladin.java, Sorcerer.java** — Concrete hero classes.
+- **entities/monsters/Dragon.java, Exoskeleton.java, Spirit.java** — Concrete monster classes.
 
-#### Item System
-- **Item.java** — Abstract base class for all items with common properties (name, price, level requirement, uses).
+#### Item & Market System
 
-- **items/Weapon.java**
-  - Represents weapons with damage, required hands, and allowed grips.
-  - Supports multiple grip styles: ONE_HANDED, TWO_HANDED, DUAL_WIELD.
-  - Tracks durability through use count.
+- **items/Item.java**, **Weapon.java**, **Armor.java**, **Potion.java**, **Spell.java** — Represents the inventory items.
+- **market/Market.java** — Handles the logic for buying and selling items. In Legends of Valor, this is accessible only at the Nexus.
+- **factories/HeroFactory.java**, **MonsterFactory.java**, **ItemFactory.java** — Data-driven factories that parse text files to create objects.
 
-- **items/WeaponGrip.java** — Enum defining weapon grip styles with different damage multipliers, mana costs, and accuracy modifiers:
-  - ONE_HANDED: 1.0x damage, 0 mana, 100% accuracy
-  - TWO_HANDED: 1.5x damage, 5 mana, 100% accuracy
-  - DUAL_WIELD: 1.0x damage per weapon, 0 mana, 80% accuracy
+#### Utility & I/O
 
-- **items/Armor.java** — Armor pieces providing damage reduction through defense stat.
+- **io/InputHandler.java** — robust input validation for integers, menus, and strings.
+- **io/OutputHandler.java** — Formatted console display.
+- **factories/DataFileParser.java** — Utility for reading configuration files.
 
-- **items/Spell.java** — Spells that deal damage and apply debuffs to monsters. Limited uses (3 per spell).
+### Game Rules: Legends of Valor
 
-- **items/SpellType.java** — Enum defining spell types:
-  - ICE: Reduces monster damage by 10%
-  - FIRE: Reduces monster defense by 10%
-  - LIGHTNING: Reduces monster dodge chance by 10%
+1.  **Setup:** The player selects 3 heroes. Each hero is assigned to a specific lane (Top, Mid, or Bot).
+2.  **The Map:**
+    - **Row 7 (Bottom):** Heroes' Nexus. Heroes spawn here. Monsters try to reach here.
+    - **Row 0 (Top):** Monsters' Nexus. Monsters spawn here. Heroes try to reach here.
+    - **Lanes:** Separated by "I" (Inaccessible) walls.
+3.  **Terrain Bonuses:**
+    - **B (Bush):** +10% Dexterity.
+    - **C (Cave):** +10% Agility.
+    - **K (Koulou):** +10% Strength.
+4.  **Combat:** Combat can occur if a target is in the same cell or an adjacent cell (Range 1).
+5.  **Monster AI:** Monsters appear in waves (every 8 rounds). They will attack if a hero is in range; otherwise, they move one step forward (South).
+6.  **Win Condition:** A Hero enters the Monsters' Nexus (Row 0).
+7.  **Lose Condition:** A Monster enters the Heroes' Nexus (Row 7).
 
-- **items/Potion.java** — Consumable items that restore or boost hero stats. Single-use.
+### Controls (Legends of Valor)
 
-- **items/PotionType.java** — Enum defining potion effects:
-  - HEALTH: Restores HP
-  - MANA: Restores MP
-  - STRENGTH: Increases strength
-  - AGILITY: Increases agility
-  - DEXTERITY: Increases dexterity
+Since this is a strategy game, the controls are expanded compared to the previous assignment:
 
-#### World/Tile System
-- **Tile.java** — Abstract base class for all tile types on the world map.
-- **CommonTile.java** — Regular tiles where battles can occur (30% chance when entering).
-- **MarketTile.java** — Tiles containing markets where heroes can buy/sell items.
-- **InaccessibleTile.java** — Blocked tiles that cannot be traversed.
-
-#### Market System
-- **Market.java** — Marketplace interface where heroes can:
-  - Buy weapons, armor, spells, and potions
-  - Sell items for half their purchase price
-  - Each hero manages their own inventory and gold
-
-#### Factory Classes
-- **HeroFactory.java** — Loads hero data from configuration files and creates hero instances. Parses hero stats from Warriors.txt, Paladins.txt, and Sorcerers.txt.
-
-- **MonsterFactory.java** — Loads monster data and creates monster instances for battles. Ensures fresh monster instances for each battle with proper stat initialization. Reads from Dragons.txt, Exoskeletons.txt, and Spirits.txt.
-
-- **ItemFactory.java** — Loads item data from configuration files:
-  - Weaponry.txt: Weapon definitions
-  - Armory.txt: Armor definitions
-  - FireSpells.txt, IceSpells.txt, LightningSpells.txt: Spell definitions
-  - Potions.txt: Potion definitions
-  - Provides starter weapons and armor for new heroes
-
-#### Utility Classes
-- **io/InputHandler.java** — Handles all user input with validation:
-  - Menu choices with range validation
-  - Integer input with min/max bounds
-  - Yes/No confirmations
-  - String input
-  - Supports 'q' to quit at any menu
-
-- **io/OutputHandler.java** — Manages all console output formatting:
-  - Headers with decorative borders
-  - Menu display
-  - Separators and lines
-  - General message display
-
-- **DataFileParser.java** — Parses tab-delimited data files from the Legends_Monsters_and_Heroes directory. Handles integer parsing and data validation.
+- **Movement:**
+  - `W` / `A` / `S` / `D`: Move Up / Left / Down / Right.
+- **Special Moves:**
+  - `T`: **Teleport**. Move to an adjacent space of a hero in a _different_ lane.
+  - `R`: **Recall**. Instantly return to your Nexus spawn point.
+- **Combat:**
+  - `K`: **Attack**. Strike a monster in range with your weapon.
+  - `C`: **Cast Spell**. Use a spell from inventory on a monster in range.
+  - `P`: **Potion**. Use a potion from inventory.
+  - `E`: **Equip**. Change Armor/Weapon (Mainly via Market/Status).
+- **System:**
+  - `M`: **Market**. Enter the shop (Only available when standing on a Nexus tile).
+  - `I`: **Info**. Display current hero stats.
+  - `Q`: **Quit**. Exit the game.
 
 ### How to Compile & Run
 
-- Compile all source files:
-  ```bash
-  cd LegendsOfValor
-  javac -d bin src/*.java src/base/*.java src/heroes/*.java src/monsters/*.java src/items/*.java src/io/*.java
-  ```
+1.  **Navigate to the source directory:**
 
-- Run the game:
-  ```bash
-  cd bin
-  java App
-  ```
+    ```bash
+    cd src
+    ```
 
-  Or compile and run from src directory:
-  ```bash
-  cd src
-  javac *.java base/*.java heroes/*.java monsters/*.java items/*.java io/*.java
-  java App
-  ```
+2.  **Compile all files:**
+
+    ```bash
+    javac -d bin src/*.java src/board/*.java src/combat/*.java src/entities/*.java src/entities/heroes/*.java src/entities/monsters/*.java src/factories/*.java src/io/*.java src/game/*.java src/items/*.java src/market/*.java
+    ```
+
+3.  **Run the Game:**
+
+    ```bash
+    java App
+    ```
+
+4.  **Select Game Mode:**
+    The menu will appear. Type `2` to play **Legends of Valor**.
+
 
 ### Game Controls
 ```
-W/w - Move up
-A/a - Move left
-S/s - Move down
-D/d - Move right
-I/i - Show party information
-E/e - Manage equipment and inventory
-M/m - Enter market (when on market tile)
-Q/q - Quit game
+Controls:
+  W - Move up    |  A - Move left
+  S - Move down  |  D - Move right
+  T - Teleport   |  R - Recall to Nexus
+  A - Attack     |  C - Cast Spell
+  P - Use Potion |  E - Equip Item
+  M - Market (at Nexus)
+  I - Info       |  Q - Quit
 ```
 
 ### Sample Input & Output
@@ -956,46 +934,3 @@ Enter your choice: 0
 
 Thank you for playing! Goodbye!
 ```
-
-### Architecture & Design
-
-#### Inheritance Hierarchy
-The game follows a clear object-oriented inheritance structure:
-
-```
-RPGGame (abstract base for all RPG games)
-  └── HeroesAndMonsters (abstract base for heroes vs monsters games)
-        └── Game (concrete implementation)
-
-Creature (abstract base for all combatants)
-  ├── Hero (abstract base for all heroes)
-  │     ├── Warrior
-  │     ├── Paladin
-  │     └── Sorcerer
-  └── Monster (abstract base for all monsters)
-        ├── Dragon
-        ├── Exoskeleton
-        └── Spirit
-```
-
-#### Key Design Principles
-- **Polymorphism**: Heroes and monsters both extend Creature, allowing them to attack each other using the same interface
-- **Encapsulation**: Inventory class encapsulates item management logic
-- **Abstraction**: Abstract base classes (Creature, Hero, Monster, RPGGame) define common behavior while allowing subclass-specific implementations
-
-### Design Patterns Used
-1. **Factory Pattern** — HeroFactory, MonsterFactory, and ItemFactory encapsulate object creation logic.
-2. **Template Method Pattern** — Abstract classes (RPGGame, HeroesAndMonsters, Creature, Hero, Monster, Item, Tile) define common structure with subclass-specific implementations.
-3. **Strategy Pattern** — WeaponGrip enum implements different combat strategies (damage, accuracy, mana cost).
-4. **Singleton Pattern** — Factory classes use static initialization blocks to load data once.
-5. **Inheritance Pattern** — Multi-level inheritance hierarchy from RPGGame → HeroesAndMonsters → Game, and Creature → Hero/Monster → specific types.
-
-### Data Files
-The game reads from configuration files in the `Legends_Monsters_and_Heroes/` directory:
-- Warriors.txt, Paladins.txt, Sorcerers.txt (hero stats)
-- Dragons.txt, Exoskeletons.txt, Spirits.txt (monster stats)
-- Weaponry.txt, Armory.txt (equipment stats)
-- FireSpells.txt, IceSpells.txt, LightningSpells.txt (spell stats)
-- Potions.txt (potion stats)
-
-All files use tab-delimited format with headers describing the data structure.
