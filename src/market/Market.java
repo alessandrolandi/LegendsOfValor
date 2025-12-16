@@ -24,7 +24,7 @@ public class Market {
     public void enter(Party party, InputHandler input, OutputHandler output) {
         this.input = input;
         this.output = output;
-        output.display("\n=== WELCOME TO THE MARKET ===");
+        output.display(Color.BOLD_PURPLE + "\n=== WELCOME TO THE MARKET ===" + Color.RESET);
         
         while (true) {
             output.display("\nChoose a hero to shop with (or 0 to exit):");

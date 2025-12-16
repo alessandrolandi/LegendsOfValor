@@ -21,13 +21,13 @@ public class OutputHandler {
         int length = title.length() + 4;
         String border = "═".repeat(length);
 
-        display("╔" + border + "╗");
-        display("║  " + title + "  ║");
-        display("╚" + border + "╝");
+        display("+" + border + "+");
+        display("|  " + title + "  |");
+        display("+" + border + "+");
     }
 
     public void displaySeparator(String title) {
-        display("\n═══ " + title + " ═══");
+        display("\n--- " + title + " ---");
     }
 
     public void displayError(String message) {
