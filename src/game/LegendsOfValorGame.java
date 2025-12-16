@@ -579,7 +579,7 @@ public class LegendsOfValorGame extends RPGGame {
      * Handles monster defeat - gives rewards to all heroes.
      */
     private void handleMonsterDefeat(Monster monster, Hero killer) {
-        output.display("\n💀 " + monster.getName() + " defeated!");
+        output.display("\n" + monster.getName() + " defeated!");
 
         // Remove from board
         Tile tile = board.getTile(monster.getRow(), monster.getCol());

@@ -19,7 +19,7 @@ public class OutputHandler {
 
     public void displayHeader(String title) {
         int length = title.length() + 4;
-        String border = "═".repeat(length);
+        String border = "-".repeat(length);
 
         display("+" + border + "+");
         display("|  " + title + "  |");

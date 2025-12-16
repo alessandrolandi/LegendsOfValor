@@ -2,6 +2,7 @@ package game;
 
 import io.*;
 import java.util.Scanner;
+import io.Color;
 
 /**
  * Game menu for selecting between different game modes.
@@ -52,9 +53,9 @@ public class GameMenu {
      * Displays the main game selection menu.
      */
     private void displayMainMenu() {
-        output.display("\n========================================");
-        output.display("        RPG GAME COLLECTION");
-        output.display("========================================");
+        output.display(Color.BOLD_YELLOW + "\n========================================" + Color.RESET);
+        output.display(Color.BOLD_YELLOW + "        RPG GAME COLLECTION" + Color.RESET);
+        output.display(Color.BOLD_YELLOW + "========================================" + Color.RESET);
         output.display("\nSelect a game to play:");
         output.display("");
         output.display("1. Monsters and Heroes");
