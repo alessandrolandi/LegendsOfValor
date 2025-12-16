@@ -263,40 +263,84 @@ public class LegendsOfValorGame extends RPGGame {
     }
 
     /**
-     * Prompts for and performs a single hero action.
+     * Prompts for and performs hero actions until a turn-ending action is taken.
+     * Turn-ending actions: movement, teleport, recall, attack, cast spell
+     * Non-turn-ending actions: potion, equip, market, info
      */
     private void performHeroAction(Hero hero) {
-        output.display("\nActions: [W]Move Up [S]Down [A]Left [D]Right");
-        output.display("         [T]Teleport [R]Recall [K]Attack [C]Spell");
-        output.display("         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit");
+        boolean turnEnded = false;
 
-        String command = input.readLine("Choose action: ").trim().toLowerCase();
+        while (!turnEnded && isRunning) {
+            output.display("\nActions: [W]Move Up [S]Down [A]Left [D]Right");
+            output.display("         [T]Teleport [R]Recall [K]Attack [C]Spell");
+            output.display("         [P]Potion [E]Equip [M]Market [I]Info [Q]Quit");
 
-        if (command.isEmpty()) {
-            output.display(Color.YELLOW + "No action taken." + Color.RESET);
-            return;
-        }
+            String command = input.readLine("Choose action: ").trim().toLowerCase();
 
-        switch (command.charAt(0)) {
-            case 'w': moveHero(hero, -1, 0); break;
-            case 's': moveHero(hero, 1, 0); break;
-            case 'a': moveHero(hero, 0, -1); break;
-            case 'd': moveHero(hero, 0, 1); break;
-            case 't': teleportHero(hero); break;
-            case 'r': recallHero(hero); break;
-            case 'k': attackWithHero(hero); break;
-            case 'c': castSpellWithHero(hero); break;
-            case 'p': usePotionWithHero(hero); break;
-            case 'e': equipItemWithHero(hero); break;
-            case 'm': accessMarket(hero); break;
-            case 'i': hero.displayStats(); break;
-            case 'q':
-                if (input.readYesNo("Are you sure you want to quit the game?")) {
-                    output.display("\nQuitting game...");
-                    isRunning = false;
-                }
-                break;
-            default: output.display("Invalid action!");
+            if (command.isEmpty()) {
+                output.display(Color.YELLOW + "No action taken." + Color.RESET);
+                continue;
+            }
+
+            switch (command.charAt(0)) {
+                case 'w':
+                    moveHero(hero, -1, 0);
+                    turnEnded = true;
+                    break;
+                case 's':
+                    moveHero(hero, 1, 0);
+                    turnEnded = true;
+                    break;
+                case 'a':
+                    moveHero(hero, 0, -1);
+                    turnEnded = true;
+                    break;
+                case 'd':
+                    moveHero(hero, 0, 1);
+                    turnEnded = true;
+                    break;
+                case 't':
+                    teleportHero(hero);
+                    turnEnded = true;
+                    break;
+                case 'r':
+                    recallHero(hero);
+                    turnEnded = true;
+                    break;
+                case 'k':
+                    attackWithHero(hero);
+                    turnEnded = true;
+                    break;
+                case 'c':
+                    castSpellWithHero(hero);
+                    turnEnded = true;
+                    break;
+                case 'p':
+                    usePotionWithHero(hero);
+                    // Does not end turn
+                    break;
+                case 'e':
+                    equipItemWithHero(hero);
+                    // Does not end turn
+                    break;
+                case 'm':
+                    accessMarket(hero);
+                    // Does not end turn
+                    break;
+                case 'i':
+                    hero.displayStats();
+                    // Does not end turn
+                    break;
+                case 'q':
+                    if (input.readYesNo("Are you sure you want to quit the game?")) {
+                        output.display("\nQuitting game...");
+                        isRunning = false;
+                        return;
+                    }
+                    break;
+                default:
+                    output.display("Invalid action!");
+            }
         }
     }
 
@@ -553,7 +597,118 @@ public class LegendsOfValorGame extends RPGGame {
     }
 
     private void equipItemWithHero(Hero hero) {
-        output.display(Color.YELLOW + "\nQuick equip not available - use Market at Nexus for full inventory management." + Color.RESET);
+        output.display(Color.CYAN + "\n=== EQUIP ITEM ===" + Color.RESET);
+        output.display("1. Equip main hand weapon");
+        output.display("2. Equip off hand weapon");
+        output.display("3. Equip armor");
+        output.display("0. Back");
+
+        int choice = input.readMenuChoice("Enter choice: ", 3);
+
+        if (choice == 1) {
+            equipMainHandWeapon(hero);
+        } else if (choice == 2) {
+            equipOffHandWeapon(hero);
+        } else if (choice == 3) {
+            equipArmor(hero);
+        }
+    }
+
+    private void equipMainHandWeapon(Hero hero) {
+        List<Weapon> weapons = getWeaponsFromInventory(hero);
+        if (weapons.isEmpty()) {
+            output.display(Color.YELLOW + "No weapons in inventory!" + Color.RESET);
+            return;
+        }
+
+        output.display(Color.CYAN + "\nSelect weapon:" + Color.RESET);
+        for (int i = 0; i < weapons.size(); i++) {
+            Weapon w = weapons.get(i);
+            output.display((i + 1) + ". " + w.getName() +
+                " (Dmg: " + w.getDamage() +
+                ", Hands: " + w.getHandsRequired() + ")");
+        }
+        output.display("0. Back");
+
+        int choice = input.readMenuChoice(weapons.size());
+        if (choice > 0) {
+            hero.equipWeapon(weapons.get(choice - 1));
+        }
+    }
+
+    private void equipOffHandWeapon(Hero hero) {
+        List<Weapon> weapons = getWeaponsFromInventory(hero);
+        if (weapons.isEmpty()) {
+            output.display(Color.YELLOW + "No weapons in inventory!" + Color.RESET);
+            return;
+        }
+
+        // Filter for one-handed weapons only
+        List<Weapon> oneHanded = new ArrayList<>();
+        for (Weapon w : weapons) {
+            if (w.getHandsRequired() == 1) {
+                oneHanded.add(w);
+            }
+        }
+
+        if (oneHanded.isEmpty()) {
+            output.display(Color.YELLOW + "No one-handed weapons in inventory!" + Color.RESET);
+            return;
+        }
+
+        output.display(Color.CYAN + "\nSelect weapon:" + Color.RESET);
+        for (int i = 0; i < oneHanded.size(); i++) {
+            Weapon w = oneHanded.get(i);
+            output.display((i + 1) + ". " + w.getName() +
+                " (Dmg: " + w.getDamage() + ")");
+        }
+        output.display("0. Back");
+
+        int choice = input.readMenuChoice(oneHanded.size());
+        if (choice > 0) {
+            hero.equipOffhandWeapon(oneHanded.get(choice - 1));
+        }
+    }
+
+    private void equipArmor(Hero hero) {
+        List<Armor> armors = getArmorsFromInventory(hero);
+        if (armors.isEmpty()) {
+            output.display(Color.YELLOW + "No armor in inventory!" + Color.RESET);
+            return;
+        }
+
+        output.display(Color.CYAN + "\nSelect armor:" + Color.RESET);
+        for (int i = 0; i < armors.size(); i++) {
+            Armor a = armors.get(i);
+            output.display((i + 1) + ". " + a.getName() +
+                " (Def: " + a.getReduction() + ")");
+        }
+        output.display("0. Back");
+
+        int choice = input.readMenuChoice(armors.size());
+        if (choice > 0) {
+            hero.equipArmor(armors.get(choice - 1));
+        }
+    }
+
+    private List<Weapon> getWeaponsFromInventory(Hero hero) {
+        List<Weapon> weapons = new ArrayList<>();
+        for (Item item : hero.getInventory()) {
+            if (item instanceof Weapon && item.isUsable()) {
+                weapons.add((Weapon) item);
+            }
+        }
+        return weapons;
+    }
+
+    private List<Armor> getArmorsFromInventory(Hero hero) {
+        List<Armor> armors = new ArrayList<>();
+        for (Item item : hero.getInventory()) {
+            if (item instanceof Armor && item.isUsable()) {
+                armors.add((Armor) item);
+            }
+        }
+        return armors;
     }
 
     private void accessMarket(Hero hero) {
