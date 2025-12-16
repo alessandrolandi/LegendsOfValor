@@ -19,24 +19,24 @@ public class OutputHandler {
 
     public void displayHeader(String title) {
         int length = title.length() + 4;
-        String border = "═".repeat(length);
+        String border = "-".repeat(length);
 
-        display("╔" + border + "╗");
-        display("║  " + title + "  ║");
-        display("╚" + border + "╝");
+        display(Color.BOLD_RED + "+" + border + "+"+ Color.RESET);
+        display(Color.BOLD_RED + "|  " + title + "  |" + Color.RESET);
+        display(Color.BOLD_RED + "+" + border + "+" + Color.RESET);
     }
 
     public void displaySeparator(String title) {
-        display("\n═══ " + title + " ═══");
+        display("\n" + Color.BOLD_RED + "--- " + title + " ---" + Color.RESET);
     }
 
     public void displayError(String message) {
-        display("ERROR: " + message);
+        display(Color.BOLD_RED + "ERROR: " + message + Color.RESET);
     }
 
 
     public void displaySuccess(String message) {
-        display("✓ " + message);
+        display(Color.BOLD_GREEN + "✓ " + message + Color.RESET);
     }
 
     public void displayMenu(String title, String... options) {
@@ -49,10 +49,10 @@ public class OutputHandler {
     }
 
     public void displayBattleStatus(String heroesInfo, String monstersInfo) {
-        display("\n=== BATTLE STATUS ===");
-        display("\nHEROES:");
+        display(Color.BOLD_YELLOW + "\n=== BATTLE STATUS ===" + Color.RESET);
+        display(Color.BOLD_GREEN + "\nHEROES:" + Color.RESET);
         display(heroesInfo);
-        display("\nMONSTERS:");
+        display(Color.BOLD_RED + "\nMONSTERS:" + Color.RESET);
         display(monstersInfo);
     }
 }

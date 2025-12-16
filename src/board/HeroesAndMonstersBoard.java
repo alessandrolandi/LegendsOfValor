@@ -1,6 +1,7 @@
 package board;
 
 import io.*;
+import io.Color;
 
 /**
  * Represents the game board for Legends: Monsters and Heroes.

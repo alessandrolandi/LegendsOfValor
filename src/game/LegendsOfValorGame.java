@@ -51,14 +51,14 @@ public class LegendsOfValorGame extends RPGGame {
 
     @Override
     protected void displayWelcome() {
-        output.display("========================================");
-        output.display("       LEGENDS OF VALOR");
-        output.display("========================================");
+        output.display(Color.BOLD_YELLOW + "========================================" + Color.RESET);
+        output.display(Color.BOLD_YELLOW + "       LEGENDS OF VALOR" + Color.RESET);
+        output.display(Color.BOLD_YELLOW + "========================================" + Color.RESET);
         output.display("\nWelcome to the Arena!");
-        output.display("\nObjective:");
-        output.display("• Reach the enemy Nexus to WIN");
-        output.display("• Defend your Nexus from monsters");
-        output.display("\nControls:");
+        output.display(Color.CYAN + "\nObjective:" + Color.RESET);
+        output.display("- Reach the enemy Nexus to WIN");
+        output.display("- Defend your Nexus from monsters");
+        output.display(Color.CYAN + "\nControls:" + Color.RESET);
         output.display("  W - Move up    |  A - Move left");
         output.display("  S - Move down  |  D - Move right");
         output.display("  T - Teleport   |  R - Recall to Nexus");
@@ -71,7 +71,7 @@ public class LegendsOfValorGame extends RPGGame {
 
     @Override
     protected void initializeGame() {
-        output.display("\n=== BOARD SETUP ===");
+        output.display("\n" + Color.BOLD_CYAN + "=== BOARD SETUP ===" + Color.RESET);
         board = new LegendsOfValorBoard();
         output.display("3-Lane battle arena created!");
 
@@ -97,7 +97,7 @@ public class LegendsOfValorGame extends RPGGame {
      * Allows player to select 3 heroes and assign them to lanes.
      */
     private void selectHeroesAndLanes() {
-        output.display("\n=== HERO SELECTION ===");
+        output.display(Color.BOLD_CYAN + "\n=== HERO SELECTION ===" + Color.RESET);
         List<Hero> availableHeroes = HeroFactory.getAllHeroes();
 
         if (availableHeroes.isEmpty()) {
@@ -109,7 +109,7 @@ public class LegendsOfValorGame extends RPGGame {
         String[] laneNames = {"Top Lane", "Mid Lane", "Bot Lane"};
 
         for (int i = 0; i < 3; i++) {
-            output.display("\n--- Selecting hero for " + laneNames[i] + " ---");
+            output.display(Color.GREEN + "\n--- Selecting hero for " + laneNames[i] + " ---" + Color.RESET);
             displayAvailableHeroes(availableHeroes);
 
             int choice = input.readInt("Select hero (1-" + availableHeroes.size() + "): ",
@@ -120,7 +120,7 @@ public class LegendsOfValorGame extends RPGGame {
             selected.setLane(i);
             heroes.add(selected);
 
-            output.display("✓ " + selected.getName() + " assigned to " + laneNames[i]);
+            output.display(Color.GREEN + selected.getName() + " assigned to " + laneNames[i] + Color.RESET);
         }
     }
 
@@ -173,7 +173,7 @@ public class LegendsOfValorGame extends RPGGame {
             monsters.add(monster);
         }
 
-        output.display("\n⚔️  3 monsters have spawned!");
+        output.display(Color.BOLD_RED +"\n 3 monsters have spawned!" + Color.RESET);
     }
 
     private int getHighestHeroLevel() {
@@ -190,15 +190,15 @@ public class LegendsOfValorGame extends RPGGame {
     protected void gameLoop() {
         while (isRunning) {
             roundNumber++;
-            output.display("\n" + "=".repeat(50));
-            output.display("ROUND " + roundNumber);
-            output.display("=".repeat(50));
+            output.display(Color.BOLD_CYAN + "\n" + "=".repeat(50) + Color.RESET);
+            output.display(Color.BOLD_CYAN + "ROUND " + roundNumber + Color.RESET);
+            output.display(Color.BOLD_CYAN + "=".repeat(50) + Color.RESET);
 
             // Display board
             displayBoard();
 
             // Heroes' turn
-            output.display("\n>>> HEROES' TURN <<<");
+            output.display(Color.BOLD_GREEN + "\n>>> HEROES' TURN <<<" + Color.RESET);
             heroTurn();
 
             // Check if game was quit during heroes' turn
@@ -208,18 +208,18 @@ public class LegendsOfValorGame extends RPGGame {
 
             // Check win condition
             if (checkVictory()) {
-                output.display("\nVICTORY! A hero reached the monster Nexus!");
+                output.display(Color.BOLD_GREEN + "\nVICTORY! A hero reached the monster Nexus!" + Color.RESET);
                 isRunning = false;
                 break;
             }
 
             // Monsters' turn
-            output.display("\n>>> MONSTERS' TURN <<<");
+            output.display(Color.BOLD_RED + "\n>>> MONSTERS' TURN <<<" + Color.RESET);
             monsterTurn();
 
             // Check lose condition
             if (checkDefeat()) {
-                output.display("\nDEFEAT! A monster reached your Nexus!");
+                output.display(Color.BOLD_RED + "\nDEFEAT! A monster reached your Nexus!" + Color.RESET);
                 isRunning = false;
                 break;
             }
@@ -229,7 +229,7 @@ public class LegendsOfValorGame extends RPGGame {
 
             // Spawn new monsters periodically
             if (roundNumber % monstersSpawnInterval == 0) {
-                output.display("\nNew wave of monsters approaching!");
+                output.display(Color.RED + "\nNew wave of monsters approaching!" + Color.RESET);
                 spawnMonsters();
             }
         }
@@ -249,7 +249,7 @@ public class LegendsOfValorGame extends RPGGame {
                 continue;
             }
 
-            output.display("\n--- " + hero.getName() + "'s Turn (Lane " + (hero.getLane() + 1) + ") ---");
+            output.display(Color.BOLD_GREEN + "\n--- " + hero.getName() + "'s Turn (Lane " + (hero.getLane() + 1) + ") ---" + Color.RESET);
             output.display("Position: (" + hero.getRow() + ", " + hero.getCol() + ")");
             output.display("HP: " + (int)hero.getHp() + " | MP: " + (int)hero.getMp());
 
@@ -273,7 +273,7 @@ public class LegendsOfValorGame extends RPGGame {
         String command = input.readLine("Choose action: ").trim().toLowerCase();
 
         if (command.isEmpty()) {
-            output.display("No action taken.");
+            output.display(Color.YELLOW + "No action taken." + Color.RESET);
             return;
         }
 
@@ -309,7 +309,7 @@ public class LegendsOfValorGame extends RPGGame {
 
         // Validate movement
         if (!isValidMove(hero, newRow, newCol)) {
-            output.display("Cannot move there!");
+            output.display( Color.YELLOW + "Cannot move there!" + Color.RESET);
             return;
         }
 
@@ -322,7 +322,7 @@ public class LegendsOfValorGame extends RPGGame {
         Tile newTile = board.getTile(newRow, newCol);
         newTile.addHero(hero);
 
-        output.display(hero.getName() + " moved to (" + newRow + ", " + newCol + ")");
+        output.display(Color.YELLOW+ hero.getName() + " moved to (" + newRow + ", " + newCol + ")" + Color.RESET);
     }
 
     /**
@@ -358,12 +358,12 @@ public class LegendsOfValorGame extends RPGGame {
      * Teleports hero to adjacent space of another hero in different lane.
      */
     private void teleportHero(Hero hero) {
-        output.display("\nSelect target hero to teleport near:");
+        output.display(Color.CYAN + "\nSelect target hero to teleport near:" + Color.RESET);
         for (int i = 0; i < heroes.size(); i++) {
             Hero h = heroes.get(i);
             if (h != hero && !h.isFainted()) {
-                output.display((i + 1) + ". " + h.getName() + " at (" +
-                              h.getRow() + ", " + h.getCol() + ") Lane " + (h.getLane() + 1));
+                output.display(Color.CYAN + (i + 1) + ". " + h.getName() + " at (" +
+                              h.getRow() + ", " + h.getCol() + ") Lane " + (h.getLane() + 1) + Color.RESET);
             }
         }
 
@@ -374,7 +374,7 @@ public class LegendsOfValorGame extends RPGGame {
 
         // Check different lane
         if (target.getLane() == hero.getLane()) {
-            output.display("Can only teleport to different lanes!");
+            output.display(Color.BOLD_YELLOW + "Can only teleport to different lanes!" + Color.RESET);
             return;
         }
 
@@ -394,12 +394,12 @@ public class LegendsOfValorGame extends RPGGame {
                 Tile newTile = board.getTile(newRow, newCol);
                 newTile.addHero(hero);
 
-                output.display("✨ " + hero.getName() + " teleported to (" + newRow + ", " + newCol + ")!");
+                output.display(Color.CYAN + hero.getName() + " teleported to (" + newRow + ", " + newCol + ")!" + Color.RESET);
                 return;
             }
         }
 
-        output.display("No valid teleport position available!");
+        output.display(Color.YELLOW + "No valid teleport position available!" + Color.RESET);
     }
 
     /**
@@ -413,7 +413,7 @@ public class LegendsOfValorGame extends RPGGame {
         Tile nexusTile = board.getTile(hero.getRow(), hero.getCol());
         nexusTile.addHero(hero);
 
-        output.display("🏠 " + hero.getName() + " recalled to Nexus!");
+        output.display(Color.YELLOW + hero.getName() + " recalled to Nexus!" + Color.RESET);
     }
 
     /**
@@ -423,15 +423,15 @@ public class LegendsOfValorGame extends RPGGame {
         List<Monster> inRange = getMonstersInRange(hero);
 
         if (inRange.isEmpty()) {
-            output.display("No monsters in attack range!");
+            output.display(Color.YELLOW + "No monsters in attack range!" + Color.RESET);
             return;
         }
 
-        output.display("\nMonsters in range:");
+        output.display(Color.RED + "\nMonsters in range:" + Color.RESET);
         for (int i = 0; i < inRange.size(); i++) {
             Monster m = inRange.get(i);
-            output.display((i + 1) + ". " + m.getName() + " HP:" + (int)m.getHp() +
-                          " at (" + m.getRow() + ", " + m.getCol() + ")");
+            output.display(Color.YELLOW + (i + 1) + ". " + m.getName() + " HP:" + (int)m.getHp() +
+                          " at (" + m.getRow() + ", " + m.getCol() + ")" + Color.RESET);
         }
 
         int choice = input.readInt("Attack which monster? ", 1, inRange.size());
@@ -481,7 +481,7 @@ public class LegendsOfValorGame extends RPGGame {
         List<Monster> inRange = getMonstersInRange(hero);
 
         if (inRange.isEmpty()) {
-            output.display("No monsters in range!");
+            output.display(Color.YELLOW + "No monsters in range!" + Color.RESET);
             return;
         }
 
@@ -494,11 +494,11 @@ public class LegendsOfValorGame extends RPGGame {
         }
 
         if (spells.isEmpty()) {
-            output.display("No spells available!");
+            output.display(Color.YELLOW + "No spells available!" + Color.RESET);
             return;
         }
 
-        output.display("\nAvailable spells:");
+        output.display(Color.CYAN + "\nAvailable spells:" + Color.RESET);
         for (int i = 0; i < spells.size(); i++) {
             Spell s = spells.get(i);
             output.display((i + 1) + ". " + s.getName() + " (Mana:" + s.getManaCost() +
@@ -553,14 +553,14 @@ public class LegendsOfValorGame extends RPGGame {
     }
 
     private void equipItemWithHero(Hero hero) {
-        output.display("\nQuick equip not available - use Market at Nexus for full inventory management.");
+        output.display(Color.YELLOW + "\nQuick equip not available - use Market at Nexus for full inventory management." + Color.RESET);
     }
 
     private void accessMarket(Hero hero) {
         Tile currentTile = board.getTile(hero.getRow(), hero.getCol());
 
         if (!(currentTile instanceof NexusTile)) {
-            output.display("Must be at Nexus to access market!");
+            output.display(Color.YELLOW + "Must be at Nexus to access market!" + Color.RESET);
             return;
         }
 
@@ -595,7 +595,7 @@ public class LegendsOfValorGame extends RPGGame {
             hero.gainExperience(expReward);
         }
 
-        output.display("All heroes gained " + goldReward + " gold and " + expReward + " XP!");
+        output.display(Color.BOLD_GREEN + "All heroes gained " + goldReward + " gold and " + expReward + " XP!" + Color.RESET);
     }
 
     /**
@@ -615,7 +615,7 @@ public class LegendsOfValorGame extends RPGGame {
                 monster.attack(target);
 
                 if (target.isFainted()) {
-                    output.display(target.getName() + " has been defeated!");
+                    output.display(Color.RED + target.getName() + " has been defeated!" + Color.RESET);
                 }
             } else {
                 // Move forward (south)
@@ -672,7 +672,7 @@ public class LegendsOfValorGame extends RPGGame {
         monster.setPosition(newRow, newCol);
         newTile.addMonster(monster);
 
-        output.display(monster.getName() + " advanced to (" + newRow + ", " + newCol + ")");
+        output.display(Color.YELLOW + monster.getName() + " advanced to (" + newRow + ", " + newCol + ")" + Color.RESET);
     }
 
     /**
@@ -696,7 +696,7 @@ public class LegendsOfValorGame extends RPGGame {
                 Tile nexusTile = board.getTile(hero.getRow(), hero.getCol());
                 nexusTile.addHero(hero);
 
-                output.display(hero.getName() + " respawned at Nexus!");
+                output.display(Color.GREEN + hero.getName() + " respawned at Nexus!" + Color.RESET);
             }
         }
     }
@@ -721,72 +721,104 @@ public class LegendsOfValorGame extends RPGGame {
 
     private void displayGameOver() {
         output.display("\n" + "=".repeat(50));
-        output.display("GAME OVER");
+        output.display(Color.RED + "GAME OVER" + Color.RESET);
         output.display("=".repeat(50));
-        output.display("Final Stats:");
+        output.display(Color.CYAN + "Final Stats:" + Color.RESET);
         for (Hero hero : heroes) {
             output.display(hero.getName() + " - Level " + hero.getLevel() +
                           " | Gold: " + hero.getGold());
         }
     }
 
+    private String colorForSymbol(String symbol) {
+    switch (symbol) {
+        case "P": return Color.WHITE;         // Plain
+        case "N": return Color.BOLD_CYAN;     // Nexus
+        case "I": return Color.BRIGHT_BLACK;  // Inaccessible
+        case "B": return Color.GREEN;          // Bush
+        case "K": return Color.BOLD_YELLOW;   // Keep
+        case "C": return Color.BOLD_PURPLE;          // Cave
+        default:  return Color.WHITE;
+    }
+}
+
     /**
      * Displays the current board state in the format shown in the PDF specification.
      */
     private void displayBoard() {
-        output.display("\n");
-        Tile[][] grid = board.getGrid();
+    output.display("\n");
+    Tile[][] grid = board.getGrid();
 
-        for (int row = 0; row < BOARD_SIZE; row++) {
-            // Each row is displayed as 3 lines
-            StringBuilder line1 = new StringBuilder();
-            StringBuilder line2 = new StringBuilder();
-            StringBuilder line3 = new StringBuilder();
+    for (int row = 0; row < BOARD_SIZE; row++) {
+        StringBuilder line1 = new StringBuilder();
+        StringBuilder line2 = new StringBuilder();
+        StringBuilder line3 = new StringBuilder();
 
-            for (int col = 0; col < BOARD_SIZE; col++) {
-                Tile tile = grid[row][col];
-                String symbol = tile.getSymbol();
+        for (int col = 0; col < BOARD_SIZE; col++) {
+            Tile tile = grid[row][col];
+            String symbol = tile.getSymbol();
 
-                // Map symbols for Legends of Valor display
-                // "." (CommonTile) → "P" (Plain)
-                // "X" (InaccessibleTile) → "I" (Inaccessible/Wall)
-                if (symbol.equals(".")) {
-                    symbol = "P";
-                } else if (symbol.equals("X")) {
-                    symbol = "I";
-                }
-
-                // Line 1: Tile type (e.g., "N - N - N")
-                line1.append(symbol).append(" - ").append(symbol).append(" - ").append(symbol);
-
-                // Line 2: Content (heroes/monsters or spaces/X's for walls)
-                String content = getTileContent(tile);
-                line2.append(content);
-
-                // Line 3: Tile type again
-                line3.append(symbol).append(" - ").append(symbol).append(" - ").append(symbol);
-
-                // Add spacing between cells (except after last column)
-                if (col < BOARD_SIZE - 1) {
-                    line1.append("    ");
-                    line2.append("    ");
-                    line3.append("    ");
-                }
+            // Map symbols
+            if (symbol.equals(".")) {
+                symbol = "P";
+            } else if (symbol.equals("X")) {
+                symbol = "I";
             }
 
-            output.display(line1.toString());
-            output.display(line2.toString());
-            output.display(line3.toString());
+            String color = colorForSymbol(symbol);
 
-            // Add blank line between rows (except after last row)
-            if (row < BOARD_SIZE - 1) {
-                output.display("");
+            // Line 1
+            line1.append(color)
+                 .append(symbol).append(" - ").append(symbol).append(" - ").append(symbol)
+                 .append(Color.RESET);
+
+            // Line 2
+            String content = getTileContent(tile);
+
+
+            String leftRightColor = color;   // for '|'
+            String middleColor = color;      // for inside content
+
+            if (content.contains("M")) {
+                middleColor = Color.BOLD_RED;
+            } else if (content.contains("H")) {
+                middleColor = Color.BOLD_GREEN;
+            }
+
+            // Split content: |  M1     |
+            char left = content.charAt(0);
+            char right = content.charAt(content.length() - 1);
+            String middle = content.substring(1, content.length() - 1);
+
+            line2.append(leftRightColor).append(left).append(Color.RESET)
+                .append(middleColor).append(middle).append(Color.RESET)
+                .append(leftRightColor).append(right).append(Color.RESET);
+
+            // Line 3
+            line3.append(color)
+                 .append(symbol).append(" - ").append(symbol).append(" - ").append(symbol)
+                 .append(Color.RESET);
+
+            if (col < BOARD_SIZE - 1) {
+                line1.append("    ");
+                line2.append("    ");
+                line3.append("    ");
             }
         }
 
-        output.display("");
-        displayBoardLegend();
+        output.display(line1.toString());
+        output.display(line2.toString());
+        output.display(line3.toString());
+
+        if (row < BOARD_SIZE - 1) {
+            output.display("");
+        }
     }
+
+    output.display("");
+    displayBoardLegend();
+}
+
 
     private void displayBoardHeader() {
         output.display("        [Top Lane]  [Wall]  [Mid Lane]  [Wall]  [Bot Lane]");

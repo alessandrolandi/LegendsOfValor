@@ -13,6 +13,7 @@ import items.WeaponGrip;
 import entities.monsters.Monster;
 import game.Party;
 import factories.*;
+import io.Color;
 
 /**
  * Manages combat encounters between a party of heroes and monsters.
@@ -49,14 +50,14 @@ public class Battle {
     }
     
     public boolean start() {
-        output.displayHeader("BATTLE BEGINS!");
+        output.displayHeader(Color.BOLD_CYAN + "BATTLE BEGINS!" + Color.RESET);
         output.displayLine();
 
         displayBattleState();
 
         int round = 1;
         while (!isBattleOver()) {
-            output.displaySeparator("ROUND " + round);
+            output.displaySeparator(Color.BOLD_CYAN + "ROUND " + round + Color.RESET);
 
             heroesTurn();
 
@@ -79,7 +80,7 @@ public class Battle {
     }
     
     private void heroesTurn() {
-        output.displaySeparator("HEROES' TURN");
+        output.displaySeparator(Color.BOLD_GREEN + "HEROES' TURN" + Color.RESET);
 
         for (Hero hero : party.getHeroes()) {
             if (hero.isFainted()) continue;

@@ -4,6 +4,7 @@ import entities.heroes.Hero;
 import entities.monsters.Monster;
 import io.OutputHandler;
 import java.util.*;
+import io.Color;
 
 /**
  * Represents the 8x8 game board for Legends of Valor.
