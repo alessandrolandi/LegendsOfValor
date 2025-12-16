@@ -81,6 +81,7 @@ The application now features a **Game Menu** that allows the player to choose be
 - **io/InputHandler.java** — robust input validation for integers, menus, and strings.
 - **io/OutputHandler.java** — Formatted console display.
 - **factories/DataFileParser.java** — Utility for reading configuration files.
+- **io/OutputHandler.java** - Utility for colourfulterminal output.
 
 ### Game Rules: Legends of Valor
 
